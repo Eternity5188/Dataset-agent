@@ -76,7 +76,7 @@ Agent: → Reads paper structure, extracts dataset mentions
 
 - Python 3.11+
 - Node.js 18+
-- A [DashScope](https://dashscope.aliyuncs.com/) API key (Qwen-max, OpenAI-compatible endpoint)
+- A [DashScope](https://dashscope.aliyuncs.com/) API key (OpenAI-compatible endpoint)
 
 ### 1. Clone & set up backend
 
@@ -91,7 +91,7 @@ pip install -r requirements.txt
 
 ```bash
 # Required
-export DASHSCOPE_API_KEY=sk-xxxx        # DashScope / Qwen-max
+export DASHSCOPE_API_KEY=sk-xxxx        # DashScope
 
 # Optional — removes rate-limit restrictions
 export GITHUB_TOKEN=ghp_xxxx            # GitHub API (60 → 5000 req/h)
@@ -127,7 +127,7 @@ Open `http://localhost:5173`, enter your DashScope key in Settings, and start se
 
 | Key | Env Variable | Required | Purpose |
 |---|---|---|---|
-| DashScope | `DASHSCOPE_API_KEY` | ✅ Yes | LLM inference (Qwen-max) |
+| DashScope | `DASHSCOPE_API_KEY` | ✅ Yes | LLM inference |
 | GitHub | `GITHUB_TOKEN` | Optional | 5000 req/h (vs 60 unauthenticated) |
 | HuggingFace | `HF_TOKEN` | Optional | Gated dataset access |
 | Semantic Scholar | `SEMANTIC_SCHOLAR_API_KEY` | Optional | Paper search rate limit |
@@ -210,5 +210,5 @@ Please open an issue before submitting large changes.
 ---
 
 <div align="center">
-  <sub>Built with FastAPI · React · Qwen · ❤️</sub>
+  <sub>Built with FastAPI · React · LLMs · ❤️</sub>
 </div>
