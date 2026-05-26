@@ -125,13 +125,6 @@ Open `http://localhost:5173`, enter your DashScope key in Settings, and start se
 
 ## ⚙️ Configuration
 
-All API keys can be set in two ways:
-
-| Method | How | Scope |
-|---|---|---|
-| **Browser Settings** | Click ⚙️ in the UI, paste keys | Per-browser, sent via HTTP headers |
-| **Environment Variables** | `export KEY=value` before starting backend | Server-wide fallback |
-
 | Key | Env Variable | Required | Purpose |
 |---|---|---|---|
 | DashScope | `DASHSCOPE_API_KEY` | ✅ Yes | LLM inference (Qwen-max) |
@@ -204,20 +197,7 @@ dataset-agent/
 
 ## 🤝 Contributing
 
-Contributions are welcome! Ideas for extension:
-
-- 🆕 **New data sources** — add a function to `tools.py` and register it in `skills.py`
-- 🧠 **Better prompts** — improve `SYSTEM_PROMPT` in `loop.py`
-- 🗃️ **Expand the KB** — add entries to `backend/agent/data/dataset_kb.json`
-- 🎨 **UI improvements** — `frontend/src/App.jsx`
-
-```bash
-# Run backend in dev mode
-cd backend && uvicorn main:app --reload --port 8000
-
-# Run frontend in dev mode
-cd frontend && npm run dev
-```
+Contributions are welcome! 
 
 Please open an issue before submitting large changes.
 
