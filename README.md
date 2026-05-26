@@ -68,46 +68,6 @@ Agent: → Reads paper structure, extracts dataset mentions
   <img src="assets/architecture.png" alt="Dataset Agent Architecture" width="860"/>
 </div>
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                     Browser (React)                     │
-│  PDF / Text input → SSE stream → Live tool-call viewer  │
-└───────────────────────┬─────────────────────────────────┘
-                        │  POST /api/search[/pdf]  (SSE)
-┌───────────────────────▼─────────────────────────────────┐
-│                  FastAPI  (main.py)                      │
-│  Per-request API key injection via ContextVar            │
-└───────────────────────┬─────────────────────────────────┘
-                        │
-┌───────────────────────▼─────────────────────────────────┐
-│               ReAct Agent Loop  (loop.py)                │
-│                                                          │
-│   ┌──────────┐    tool_calls[]     ┌─────────────────┐  │
-│   │  LLM     │ ─────────────────►  │  Tool Executor  │  │
-│   │ (Qwen)   │ ◄─────────────────  │  (asyncio.gather│  │
-│   └──────────┘    tool results     │   parallel run) │  │
-│                                    └────────┬────────┘  │
-└─────────────────────────────────────────────│───────────┘
-                                              │
-              ┌───────────────────────────────▼──────────────────────────────┐
-              │                  Skills + Tools  (20 total)                   │
-              │                                                               │
-              │  Atomic Tools (9)          Composed Skills (11)               │
-              │  ─────────────────         ──────────────────────────────     │
-              │  web_search                search_dataset (multi-platform)    │
-              │  fetch_webpage_text        search_hf_hub (exact + fuzzy)      │
-              │  tavily_search             get_hf_metadata                    │
-              │  search_semantic_scholar   get_hf_dataset_card                │
-              │  search_pwc_dataset        get_hf_dataset_files               │
-              │  search_zenodo             get_github_readme                  │
-              │  search_opendatalab        get_github_dir                     │
-              │  get_hf_dataset_configs    get_gdrive_folder                  │
-              │  get_zenodo_record         compare_datasets                   │
-              │  get_github_repo_info      get_paper_code_repos               │
-              │                            finish  (terminal action)          │
-              └───────────────────────────────────────────────────────────────┘
-```
-
 ---
 
 ## 🚀 Quick Start
